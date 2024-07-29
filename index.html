@@ -12,7 +12,15 @@
         fetch('https://raw.githubusercontent.com/zj-gemini/sharable/main/README.md')
             .then(response => response.text())
             .then(text => {
-                document.getElementById('content').innerHTML = marked(text);
+                // Replace relative image URLs with absolute URLs
+                const updatedText = text.replace(/!\[(.*?)\]\((.*?)\)/g, (match, alt, url) => {
+                    if (!url.startsWith('http')) {
+                        url = `https://github.com/zj-gemini/sharable/raw/main/${url}`;
+                    }
+                    return `![${alt}](${url})`;
+                });
+
+                document.getElementById('content').innerHTML = marked(updatedText);
             });
     </script>
 </body>
