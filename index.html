@@ -3,25 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>README Viewer</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.4/marked.min.js"></script>
+    <title>Clickable Image Redirect</title>
 </head>
 <body>
-    <div id="content"></div>
-    <script>
-        fetch('https://raw.githubusercontent.com/zj-gemini/sharable/main/README.md')
-            .then(response => response.text())
-            .then(text => {
-                // Replace relative image URLs with absolute URLs
-                const updatedText = text.replace(/!\[(.*?)\]\((.*?)\)/g, (match, alt, url) => {
-                    if (!url.startsWith('http')) {
-                        url = `https://github.com/zj-gemini/sharable/raw/main/${url}`;
-                    }
-                    return `![${alt}](${url})`;
-                });
-
-                document.getElementById('content').innerHTML = marked(updatedText);
-            });
-    </script>
+    <a href="https://arxiv.org/pdf/2312.11805" target="_blank">
+        <img src="https://drive.google.com/uc?export=view&id=16S-MkckoC_pSzh0GO1WV8NeT6wchG1rS" alt="Image">
+    </a>
 </body>
 </html>
